@@ -1,0 +1,28 @@
+
+<project name="max mem size tester" default="build.java">
+
+    <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath=".build/kotlinc/lib/kotlin-ant.jar"/>
+
+    <target name="init">
+
+        <delete dir="out/ant"/>
+        <mkdir dir="out/ant"/>
+
+    </target>
+
+    <target name="build.java" depends="init">
+
+        <javac fork="true" memorymaximumsize="10G" srcdir="src" destdir="out/ant" includeantruntime="false">
+        </javac>
+
+    </target>
+
+    <target name="build.withKotlin" depends="init">
+
+        <javac fork="true" memorymaximumsize="10G" srcdir="src" destdir="out/ant" includeantruntime="false">
+            <withKotlin/>
+        </javac>
+
+    </target>
+
+</project>
